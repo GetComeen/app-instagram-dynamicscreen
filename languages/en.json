@@ -15,7 +15,7 @@
     }
   },
   "modules": {
-    "facebook": {
+    "instagram": {
       "name": "Instagram",
       "description": "Show latest posts from a Instagram page."
     }
