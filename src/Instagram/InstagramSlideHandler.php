@@ -2,59 +2,41 @@
 
 namespace DynamicScreen\Instagram\Instagram;
 
-use App\Domain\Module\Model\Module;
 use Carbon\Carbon;
 use DynamicScreen\SdkPhp\Handlers\SlideHandler;
 use DynamicScreen\SdkPhp\Interfaces\ISlide;
-use Illuminate\Support\Arr;
 
 class InstagramSlideHandler extends SlideHandler
 {
-    public function __construct(Module $module)
-    {
-        parent::__construct($module);
-    }
 
     public function fetch(ISlide $slide): void
     {
-        /*$options = $slide->getOptions();
-        $pageCount = (Integer)$options['pageCount'];
-        $postCount = (Integer)$options['postCount'];
+        $options = $slide->getOptions();
+        $expiration = Carbon::now()->addHour();
+        $cache_uuid = $options['pageId'];
 
-        $expiration = Carbon::now()->endOfDay();
-        $cache_uuid = base64_encode(json_encode($slide->getOption('category')));
-        $cache_key = $this->getIdentifier() ."_{$cache_uuid}";
         $driver = $this->getAuthProvider($slide->getAccounts());
-
         if ($driver == null) return;
 
-        $page = $driver->getPage($options['pageId']);
-        $posts = $driver->getPosts($options['pageId'], ($pageCount * $postCount));*/
-
-
-        //foreach (array_chunk($posts, $postCount) as $chunk) {
-            $this->addSlide(/*[
-                'page' => $page,
-                'posts' => $chunk,
-                'theme' => $options['theme']
-            ]*/);
-        //}
-    }
-
-    public function getAuthProvider(array $providerCredentialsList)
-    {
-        $authProviderIdentifier = $this->needed_accounts();
-
-        if (is_array($authProviderIdentifier)) {
-            $authProviderIdentifier = Arr::first($authProviderIdentifier);
+        $cache_key =  $driver->getProviderIdentifier() ."_{$cache_uuid}";
+        if ($options['pageId']) {
+            $api_response = app('cache')->remember($cache_key, $expiration, function () use ($options, $driver) {
+                $photos = $driver->getPhotos($options["pageId"]);
+                return [$photos, $driver->getName($options["pageId"])];
+            });
+            $photos = $api_response[0];
+            $photos = array_slice($photos, 0, ($options['pageNumber'] * 5), true);
+            foreach (collect($photos)->chunk(5) as $chunk) {
+                $photos_to_send = [];
+                foreach ($chunk as $photo) {
+                    $photos_to_send[] = $photo;
+                }
+                $this->addSlide([
+                    'instagram' => $photos_to_send,
+                    'username' => $api_response[1],
+                ]);
+            }
         }
-
-        $modules = $this->app()->modules->where('type', 'auth-provider');
-        $mod = Arr::first($modules, fn ($key, $value) => Arr::get($key, 'identifier') === $authProviderIdentifier);
-
-        $config = Arr::first($providerCredentialsList, fn ($credentials, $provider) => $provider === $mod->identifier);
-
-        return $mod->getHandler($config);
     }
 
     public function needed_accounts()

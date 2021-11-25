@@ -14,23 +14,8 @@ privileges:
     needs_account:
         -   identifier: facebook-driver
             type: facebook
-            why: privileges.needs_account.facebook.why
+            why: privileges.needs_account.instagram.why
 modules:
-    -   name: modules.instagram-driver.name
-        logo: fab fa-instagram
-        description: modules.instagram-driver.description
-        identifier: instagram-driver
-        color: orange
-        type: auth-provider
-        options:
-            provider: instagram
-            vue:
-                component: src/Instagram/Instagram.ts
-            php:
-                handler: \DynamicScreen\Instagram\InstagramDriver\InstagramAuthProviderHandler
-            node:
-                handler: src/handler.js
-
     -   name: modules.instagram.name
         logo: fab fa-instagram
         identifier: instagram
@@ -40,7 +25,7 @@ modules:
         options:
             privileges:
                 needs_account:
-                    - instagram-driver
+                    - facebook-driver
             vue:
                 component: src/Instagram/Instagram.ts
                 options: src/Instagram/InstagramOptions.ts

@@ -10,7 +10,7 @@
   "privileges": {
     "needs_account": {
       "instagram": {
-        "why": "We are using your account to fetch the latest data from Instagram's API."
+        "why": "We are using your facebook's account to fetch the latest data from Instagram's API."
       }
     }
   },
@@ -18,10 +18,6 @@
     "facebook": {
       "name": "Instagram",
       "description": "Show latest posts from a Instagram page."
-    },
-    "facebook-driver": {
-      "name": "Instagram",
-      "description": "Allow data fetching from Instagram API."
     }
   }
 }

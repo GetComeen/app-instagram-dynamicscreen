@@ -1,16 +1,4 @@
 {
-    "name": "dynamicscreen/app-instagram",
-    "description": "Instagram app for DynamicScreen SaaS",
-    "license": "MIT",
-    "authors": [
-        {
-            "name": "DynamicScreen",
-            "email": "bonjour@dynamicscreen.com"
-        }
-    ],
-    "require": {
-        "facebook/graph-sdk": "^5.7"
-    },
     "config": {
         "optimize-autoloader": true,
         "preferred-install": "dist",

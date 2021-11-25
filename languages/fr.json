@@ -9,19 +9,15 @@
   },
   "privileges": {
     "needs_account": {
-      "facebook": {
-        "why": "Nous utilisons votre compte facebook pour afficher les dernières informations provenant des serveurs de facebook."
+      "instagram": {
+        "why": "Nous utilisons votre compte instagram pour afficher les dernières informations provenant des serveurs de facebook."
       }
     }
   },
   "modules": {
     "facebook": {
       "name": "Instagram",
-      "description": "Affiche les derniers posts d'une page facebook."
-    },
-    "facebook-driver": {
-      "name": "Instagram",
-      "description": "Permet la connexion entre Instagram et DynamicScreen pour afficher de la donnée."
+      "description": "Affiche les derniers posts d'une page instagram."
     }
   }
 }

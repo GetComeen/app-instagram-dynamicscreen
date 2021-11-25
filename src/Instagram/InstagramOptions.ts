@@ -9,8 +9,6 @@ import {
   SlideUpdateFunctions
 } from "dynamicscreen-sdk-js";
 
-import i18next from "i18next";
-
 const en = require("../../languages/en.json");
 const fr = require("../../languages/fr.json");
 
@@ -18,10 +16,6 @@ export default class InstagramOptionsModule extends SlideModule {
     constructor(context: ISlideContext) {
         super(context);
     }
-
-    trans(key: string) {
-        return i18next.t(key);
-    };
 
     async onReady() {
         return true;
@@ -46,39 +40,40 @@ export default class InstagramOptionsModule extends SlideModule {
     onUpdated() {
     }
 
-    initI18n() {
-        i18next.init({
-            fallbackLng: 'en',
-            lng: 'fr',
-            resources: {
-                en: { translation: en },
-                fr: { translation: fr },
-            },
-            debug: true,
-        }, (err, t) => {
-            if (err) return console.log('something went wrong loading translations', err);
-        });
-    };
-
     // @ts-ignore
     setup(props, ctx, update: SlideUpdateFunctions, OptionsContext) {
       const { h, ref, reactive } = ctx;
 
-      // const slide = reactive(props.slide) as IPublicSlide;
+      let isAccountDataLoaded = ref(false)
+      const pages = reactive({});
 
-      // const accountsList = ref(slide.data.accounts);
+      OptionsContext.getAccountData("facebook", "instagram_pages", (accountId: number | undefined) => {
+        isAccountDataLoaded.value = accountId !== undefined;
+        console.log(accountId, 'onchange')
+        if (accountId === undefined) {
+          pages.value = {};
+        }
+      }, { extra: 'parameters' })
+        .value
+        .then((data: any) => {
+          isAccountDataLoaded.value = true;
+          pages.value = data;
+          console.log('account data successfully fetched', pages)
+        });
 
+      const { Field, FieldsRow, NumberInput, Select } = OptionsContext.components
 
-      const { Field, FieldsRow, Toggle, Select } = OptionsContext.components
-      const account = { id: '228', icon: 'fas fa-image', name: 'instagram account test' };
       return () => [
         h(FieldsRow, {}, [
-          h(Field, { class: 'flex-1', label: "Compte Instagram" }, [
+          h(isAccountDataLoaded.value && Field, { class: 'flex-1', label: "Page Instagram" }, [
             h(Select, {
-              options: [account],
-              placeholder: "Choisissez un compte",
-              ...update.option("__accounts")
+              options: [pages],
+              placeholder: "Selectionnez une page à afficher",
+              ...update.option("pageId")
             }),
+          ]),
+          h(Field, { class: 'flex-1', label: "Nombre de pages" }, [
+            h(NumberInput, { min: 0, max: 100, default: 1, ...update.option("pageNumber") })
           ]),
         ]),
       ]
