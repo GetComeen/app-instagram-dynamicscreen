@@ -1,0 +1,50 @@
+# YAML
+id: app-instagram-dynamicscreen
+name: app.name
+description: app.description
+logo: fab fa-instagram
+version: 0.3.0
+channel: stable
+api-level: 1
+color: orange
+author:
+    name: DynamicScreen
+    email: bonjour@dynamicscreen.com
+privileges:
+    needs_account:
+        -   identifier: facebook-driver
+            type: facebook
+            why: privileges.needs_account.facebook.why
+modules:
+    -   name: modules.instagram-driver.name
+        logo: fab fa-instagram
+        description: modules.instagram-driver.description
+        identifier: instagram-driver
+        color: orange
+        type: auth-provider
+        options:
+            provider: instagram
+            vue:
+                component: src/Instagram/Instagram.ts
+            php:
+                handler: \DynamicScreen\Instagram\InstagramDriver\InstagramAuthProviderHandler
+            node:
+                handler: src/handler.js
+
+    -   name: modules.instagram.name
+        logo: fab fa-instagram
+        identifier: instagram
+        color: pink
+        type: slide
+        description: modules.instagram.description
+        options:
+            privileges:
+                needs_account:
+                    - instagram-driver
+            vue:
+                component: src/Instagram/Instagram.ts
+                options: src/Instagram/InstagramOptions.ts
+            php:
+                handler: \DynamicScreen\Instagram\Instagram\InstagramSlideHandler
+            node:
+                handler: src/handler.js

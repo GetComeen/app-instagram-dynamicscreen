@@ -1,0 +1,27 @@
+{
+  "app": {
+    "name": "Instagram",
+    "description": "Afficher des informations provenant de votre compte Instagram.",
+    "author": {
+      "name": "DynamicScreen",
+      "email": "bonjour@dynamicscreen.com"
+    }
+  },
+  "privileges": {
+    "needs_account": {
+      "facebook": {
+        "why": "Nous utilisons votre compte facebook pour afficher les dernières informations provenant des serveurs de facebook."
+      }
+    }
+  },
+  "modules": {
+    "facebook": {
+      "name": "Instagram",
+      "description": "Affiche les derniers posts d'une page facebook."
+    },
+    "facebook-driver": {
+      "name": "Instagram",
+      "description": "Permet la connexion entre Instagram et DynamicScreen pour afficher de la donnée."
+    }
+  }
+}

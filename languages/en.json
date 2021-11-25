@@ -1,0 +1,27 @@
+{
+  "app": {
+    "name": "Instagram",
+    "description": "Use your Instagram's account to show real content.",
+    "author": {
+      "name": "DynamicScreen",
+      "email": "bonjour@dynamicscreen.com"
+    }
+  },
+  "privileges": {
+    "needs_account": {
+      "instagram": {
+        "why": "We are using your account to fetch the latest data from Instagram's API."
+      }
+    }
+  },
+  "modules": {
+    "facebook": {
+      "name": "Instagram",
+      "description": "Show latest posts from a Instagram page."
+    },
+    "facebook-driver": {
+      "name": "Instagram",
+      "description": "Allow data fetching from Instagram API."
+    }
+  }
+}
