@@ -1,12 +1,13 @@
 {
-    "config": {
-        "optimize-autoloader": true,
-        "preferred-install": "dist",
-        "sort-packages": true
-    },
-    "autoload": {
-        "psr-4": {
-            "DynamicScreen\\Instagram\\": "src/"
-        }
+  "authors": [
+    {
+      "name": "DynamicScreen",
+      "email": "bonjour@dynamicscreen.com"
     }
+  ],
+  "autoload": {
+      "psr-4": {
+          "DynamicScreen\\Instagram\\": "src/"
+      }
+  }
 }

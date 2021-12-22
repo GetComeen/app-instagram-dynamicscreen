@@ -38,9 +38,4 @@ class InstagramSlideHandler extends SlideHandler
             }
         }
     }
-
-    public function needed_accounts()
-    {
-        return $this->module->getOption('privileges.needs_account', false);
-    }
 }

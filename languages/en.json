@@ -17,7 +17,14 @@
   "modules": {
     "instagram": {
       "name": "Instagram",
-      "description": "Show latest posts from a Instagram page."
+      "description": "Show latest posts from a Instagram page.",
+      "options": {
+        "account-picker": {
+          "label": "Instagram page",
+          "placeholder": "Select a page to display..."
+        },
+        "page_count": "Pages count"
+      }
     }
   }
 }
