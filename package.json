@@ -1,11 +1,4 @@
 {
-  "name": "dynamicscreen-instagram",
-  "version": "0.2.0",
-  "description": "Show latest posts from a instagram account.",
-  "main": "webpack.config.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
   "author": "DynamicScreen",
   "license": "MIT",
   "dependencies": {

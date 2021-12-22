@@ -18,11 +18,11 @@ class InstagramSlideHandler extends SlideHandler
         $driver = $this->getAuthProvider($slide->getAccounts());
         if ($driver == null) return;
 
-        $cache_key =  $driver->getProviderIdentifier() ."_{$cache_uuid}";
         if ($options['pageId']) {
+            $cache_key =  $driver->getProviderIdentifier() ."_{$cache_uuid}_{$options['pageId']}";
             $api_response = app('cache')->remember($cache_key, $expiration, function () use ($options, $driver) {
                 $photos = $driver->getPhotos($options["pageId"]);
-                return [$photos, $driver->getName($options["pageId"])];
+                return [$photos, $driver->getUserName($options["pageId"])];
             });
             $photos = $api_response[0];
             $photos = array_slice($photos, 0, ($options['pageNumber'] * 5), true);

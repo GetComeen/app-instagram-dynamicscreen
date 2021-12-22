@@ -15,7 +15,7 @@ export default class InstagramOptionsModule extends SlideOptionsModule {
       let isAccountDataLoaded = ref(false)
       const pages = reactive<any>({});
 
-      this.context.getAccountData?.("facebook", "instagram_pages", {
+      this.context.getAccountData?.("facebook-driver", "instagram_pages", {
         onChange: (accountId: number | undefined) => {
           isAccountDataLoaded.value = accountId !== undefined;
           console.log(accountId, 'onchange')
