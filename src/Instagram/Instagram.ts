@@ -3,7 +3,7 @@ import {
     IPublicSlide,
     SlideModule,
     VueInstance,
-} from "dynamicscreen-sdk-js";
+} from "@comeen/comeen-play-sdk-js";
 
 import Post from "../Components/Post";
 import PostAttachments from "../Components/PostAttachments";

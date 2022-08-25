@@ -2,7 +2,7 @@ import {
   ISlideOptionsContext,
   SlideOptionsModule,
   VueInstance
-} from "dynamicscreen-sdk-js";
+} from "@comeen/comeen-play-sdk-js";
 
 export default class InstagramOptionsModule extends SlideOptionsModule {
     async onReady() {
