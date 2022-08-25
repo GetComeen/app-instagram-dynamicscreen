@@ -1,10 +1,10 @@
 <?php
 
-namespace DynamicScreen\Instagram\Instagram;
+namespace ComeenPlay\Instagram\Instagram;
 
 use Carbon\Carbon;
-use DynamicScreen\SdkPhp\Handlers\SlideHandler;
-use DynamicScreen\SdkPhp\Interfaces\ISlide;
+use ComeenPlay\SdkPhp\Handlers\SlideHandler;
+use ComeenPlay\SdkPhp\Interfaces\ISlide;
 
 class InstagramSlideHandler extends SlideHandler
 {

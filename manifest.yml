@@ -1,5 +1,5 @@
 # YAML
-id: app-instagram-dynamicscreen
+id: app-instagram-comeen-play
 name: app.name
 description: app.description
 logo: fab fa-instagram
@@ -8,8 +8,8 @@ channel: stable
 api-level: 1
 color: orange
 author:
-    name: DynamicScreen
-    email: bonjour@dynamicscreen.com
+    name: Comeen
+    email: support@comeen.com
 privileges:
     needs_account:
         -   identifier: facebook-driver
@@ -30,6 +30,6 @@ modules:
                 component: src/Instagram/Instagram.ts
                 options: src/Instagram/InstagramOptions.ts
             php:
-                handler: \DynamicScreen\Instagram\Instagram\InstagramSlideHandler
+                handler: \ComeenPlay\Instagram\Instagram\InstagramSlideHandler
             node:
                 handler: src/handler.js
