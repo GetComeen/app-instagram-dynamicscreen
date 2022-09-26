@@ -23,7 +23,8 @@ export default class InstagramOptionsModule extends SlideOptionsModule {
             pages.value = {};
           }
         },
-      }, { extra: 'parameters' })
+        // , { extra: 'parameters' }
+      })
         .value?.then((data: any) => {
           isAccountDataLoaded.value = true;
           pages.value = data;

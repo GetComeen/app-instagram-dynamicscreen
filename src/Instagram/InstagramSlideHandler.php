@@ -5,11 +5,12 @@ namespace ComeenPlay\Instagram\Instagram;
 use Carbon\Carbon;
 use ComeenPlay\SdkPhp\Handlers\SlideHandler;
 use ComeenPlay\SdkPhp\Interfaces\ISlide;
+use ComeenPlay\SdkPhp\Interfaces\IDisplay;
 
 class InstagramSlideHandler extends SlideHandler
 {
 
-    public function fetch(ISlide $slide): void
+    public function fetch(ISlide $slide, IDisplay $display): void
     {
         $options = $slide->getOptions();
         $expiration = Carbon::now()->addHour();
