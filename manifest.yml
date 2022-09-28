@@ -7,6 +7,7 @@ version: 0.3.0
 channel: stable
 api-level: 1
 color: orange
+category: social-networks
 author:
     name: Comeen
     email: support@comeen.com
