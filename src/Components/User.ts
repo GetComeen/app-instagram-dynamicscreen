@@ -1,3 +1,4 @@
+import moment from "moment";
 import {defineComponent, h, ref, toRef} from "vue";
 
 export default defineComponent({
@@ -30,7 +31,7 @@ export default defineComponent({
                     }, userName.value),
                     h("div", {
                         class: "text-gray-500 text-base font-light"
-                    }, publicationDate.value)
+                    }, moment(publicationDate.value).fromNow())
                 ])
             ])
     }

@@ -3,10 +3,10 @@ id: app-instagram-comeen-play
 name: app.name
 description: app.description
 logo: fab fa-instagram
-version: 0.3.0
+version: 0.3.1
 channel: stable
 api-level: 1
-color: orange
+color: deepskyblue
 category: social-networks
 author:
     name: Comeen
@@ -14,7 +14,7 @@ author:
 privileges:
     needs_account:
         -   identifier: facebook-driver
-            type: facebook
+            type: facebook-driver
             why: privileges.needs_account.instagram.why
 modules:
     -   name: modules.instagram.name
