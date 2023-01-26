@@ -10,13 +10,6 @@ export default class InstagramOptionsModule extends SlideOptionsModule {
   };
 
   setup(props: Record<string, any>, vue: VueInstance, context: ISlideOptionsContext) {
-    const en = require("/home/scleriot/Dev/dynamicscreen/app-server/storage/apps//app-instagram-comeen-play/0.3.1/languages/en.json");
-    const fr = require("/home/scleriot/Dev/dynamicscreen/app-server/storage/apps//app-instagram-comeen-play/0.3.1/languages/fr.json");
-    const translator: any = this.context.translator;
-    translator.addResourceBundle('en', 'instagram', en);
-    translator.addResourceBundle('fr', 'instagram', fr);
-    this.t = (key: string, namespace: string = 'instagram') => translator.t(key, { ns: namespace });
-
     const { h, ref, reactive, computed, watchEffect, watch } = vue;
 
     let isAccountDataLoaded = ref(false)
