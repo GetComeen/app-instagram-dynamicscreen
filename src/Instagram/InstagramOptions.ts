@@ -45,20 +45,18 @@ export default class InstagramOptionsModule extends SlideOptionsModule {
 
     return () => [
       h(FieldsRow, {}, [
-        h(LoadingBlock, { loading: !isAccountDataLoaded.value }, () => [
-          h(Field, { class: 'flex-1', label: this.t('modules.instagram.options.account-picker.label') }, [
-            h(Select, {
-              options: pages.value,
-              keyProp: 'key',
-              valueProp: 'name',
-              placeholder: this.t('modules.instagram.options.account-picker.placeholder'),
-              ...update.option("pageId")
-            }),
-          ]),
-          h(Field, { class: 'flex-1', label: this.t('modules.instagram.options.page_count') }, [
-            h(NumberInput, { min: 0, max: 100, default: 1, ...update.option("pageNumber", { default: 1 }) })
-          ]),
-        ])
+        h(Field, { class: 'flex-1', label: this.t("modules.instagram.options.page_count")}, [
+          h(NumberInput, { min: 0, max: 100, default: 1, ...update.option("pageNumber", { default: 1 }) })
+        ]),
+      ]),
+      isAccountDataLoaded.value && h(Field, { class: 'flex-1', label: this.t("modules.instagram.options.account-picker.label") }, () => [
+        h(Select, {
+          options: pages.value,
+          keyProp: 'key',
+          valueProp: 'name',
+          placeholder: this.t('modules.instagram.options.account-picker.placeholder'),
+          ...update.option("pageId")
+        })
       ]),
     ]
   }
