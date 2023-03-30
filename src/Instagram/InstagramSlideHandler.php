@@ -22,7 +22,7 @@ class InstagramSlideHandler extends SlideHandler
         if ($options['pageId']) {
             $cache_key =  $driver->getProviderIdentifier() . "_{$cache_uuid}_{$options['pageId']}";
             // $api_response = app('cache')->remember($cache_key, $expiration, function () use ($options, $driver) {
-            $photos = $driver->getPhotos($options["pageId"]);
+            $photos = $driver->getPhotos($options["pageId"], $options["pageNumber"]);
             $api_response = [$photos, $driver->getPageDetails($options["pageId"])];
             // });
             $user = $api_response[1];
