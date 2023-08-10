@@ -17,10 +17,10 @@ export default defineComponent({
 
         return () =>
             h("div", {
-                class: "container flex flex-col space-y-10"
+                class: "container flex flex-col em:space-y-8"
             }, [
                 h("div", {
-                    class: "text-3xl font-semibold text-gray-800",
+                    class: "em:text-3xl portrait:em:text-5xl font-semibold text-gray-800",
                     id: "post"
                 }, text.value),
                 h(User, {

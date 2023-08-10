@@ -16,15 +16,16 @@ class InstagramSlideHandler extends SlideHandler
         $expiration = Carbon::now()->addHour();
         $cache_uuid = $options['pageId'];
 
+        
         $driver = $this->getAuthProvider($slide->getAccounts());
         if ($driver == null) return;
 
         if ($options['pageId']) {
             $cache_key =  $driver->getProviderIdentifier() . "_{$cache_uuid}_{$options['pageId']}";
-            // $api_response = app('cache')->remember($cache_key, $expiration, function () use ($options, $driver) {
+
             $photos = $driver->getPhotos($options["pageId"], $options["pageNumber"]);
             $api_response = [$photos, $driver->getPageDetails($options["pageId"])];
-            // });
+
             $user = $api_response[1];
             $photos = $api_response[0];
             foreach ($photos as $photo) {
@@ -35,17 +36,6 @@ class InstagramSlideHandler extends SlideHandler
                     'user' => $user,
                 ]);
             }
-            // // $photos = array_slice($photos, 0, ($options['pageNumber'] * 5), true);
-            // foreach (collect($photos)->chunk(5) as $chunk) {
-            //     $photos_to_send = [];
-            //     foreach ($chunk as $photo) {
-            //         $photos_to_send[] = $photo;
-            //     }
-            //     $this->addSlide([
-            //         'instagram' => $photos_to_send,
-            //         'user' => $api_response[1],
-            //     ]);
-            // }
         }
     }
 }

@@ -59,7 +59,7 @@ export default class InstagramSlideModule extends SlideModule {
                     class: "w-full h-full"
                 }),
                 h("i", {
-                    class: "absolute top-10 right-10 portrait:bottom-10 portrait:top-auto text-5xl " + logo,
+                    class: "em:text-6xl absolute top-14 right-14 portrait:bottom-10 portrait:top-auto " + logo,
                     style: "color: #d62976",
                 })
             ])

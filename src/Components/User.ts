@@ -18,7 +18,7 @@ export default defineComponent({
                 id: "user"
             }, [
                 h("div", {
-                    class: "rounded-full w-16 h-16 bg-contain",
+                    class: "rounded-full em:w-10 em:h-10 portrait:em:w-20 portrait:em:h-20 bg-contain",
                     style: {
                         backgroundImage: "url(" + userPicture.value + ")"
                     }
@@ -27,10 +27,10 @@ export default defineComponent({
                     class: "flex-col"
                 }, [
                     h("div", {
-                        class: "font-semibold text-xl"
+                        class: "font-semibold em:text-xl portrait:em:text-4xl"
                     }, userName.value),
                     h("div", {
-                        class: "text-gray-500 text-base font-light"
+                        class: "text-gray-500 em:text-base portrait:em:text-2xl font-light"
                     }, moment(publicationDate.value).fromNow())
                 ])
             ])

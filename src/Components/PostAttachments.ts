@@ -38,10 +38,11 @@ export default defineComponent({
                     class: "bloc-right w-1/2 h-full portrait:w-full flex items-center justify-center"
                 }, [
                     h("div", {
-                        class: "w-2/3 h-2/3 text-2xl font-semibold flex justify-center flex-col space-y-10"
+                        class: "w-2/3 h-2/3 em:text-2xl font-semibold flex justify-center flex-col em:space-y-8"
                     }, [
                         h("div", {
-                            id: "post"
+                            id: "post",
+                            class: "em:text-2xl em:leading-5",
                         }, text.value),
                         h(User, {
                             userPicture: userPicture.value,
