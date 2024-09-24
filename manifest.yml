@@ -2,7 +2,7 @@
 id: app-instagram-comeen-play
 name: app.name
 description: app.description
-logo: fab fa-instagram
+logo: https://storage.googleapis.com/comeen-play-assets/icons/instagram.svg
 version: 0.3.1
 channel: stable
 api-level: 1
@@ -18,7 +18,7 @@ privileges:
             why: privileges.needs_account.instagram.why
 modules:
     -   name: modules.instagram.name
-        logo: fab fa-instagram
+        logo: https://storage.googleapis.com/comeen-play-assets/icons/instagram.svg
         identifier: instagram
         color: pink
         type: slide
