@@ -19,6 +19,7 @@
       "name": "Instagram",
       "description": "Show latest posts from a Instagram page.",
       "options": {
+        "error": "Error while loading data, please check your account",
         "account-picker": {
           "label": "Instagram page",
           "placeholder": "Select a page to display..."

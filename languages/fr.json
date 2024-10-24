@@ -19,6 +19,7 @@
       "name": "Instagram",
       "description": "Affiche les derniers posts d'une page instagram.",
       "options": {
+        "error": "Erreur lors du chargement des données, veuillez vérifier votre compte",
         "account-picker": {
           "label": "Page Instagram",
           "placeholder": "Sélectionnez une page à afficher..."
